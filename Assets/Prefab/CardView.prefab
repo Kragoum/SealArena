@@ -223,6 +223,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04406498651b1bc4d911a8bd55691696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 7411598279542472111}
+  description: {fileID: 4302300429253894024}
+  mana: {fileID: 7983093961350786859}
+  imageSR: {fileID: 8787385009878230757}
+  wrapper: {fileID: 6001664429269202236}
 --- !u!210 &8386849277841333246
 SortingGroup:
   m_ObjectHideFlags: 0

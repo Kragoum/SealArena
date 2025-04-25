@@ -6,13 +6,15 @@ using UnityEngine;
 public class TestSystem : MonoBehaviour
 {
     [SerializeField] private HandView handView;
+    [SerializeField] private CardData cardData;
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            CardView cardView = CardViewCreator.Instance.CreateCardView(transform.position, Quaternion.identity);
+            Card card = new Card(cardData);
+            CardView cardView = CardViewCreator.Instance.CreateCardView(card, transform.position, Quaternion.identity);
             StartCoroutine(handView.AddCard(cardView));
         }
     }
