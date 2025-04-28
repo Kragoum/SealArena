@@ -185,9 +185,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4563368670150664353}
-  - component: {fileID: 7188831230044971310}
   - component: {fileID: 8386849277841333246}
   - component: {fileID: 7753191195969133532}
+  - component: {fileID: 1066547027733929846}
   m_Layer: 0
   m_Name: CardView
   m_TagString: Untagged
@@ -211,23 +211,6 @@ Transform:
   - {fileID: 2483454562626395309}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7188831230044971310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209221038175758211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04406498651b1bc4d911a8bd55691696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 7411598279542472111}
-  description: {fileID: 4302300429253894024}
-  mana: {fileID: 7983093961350786859}
-  imageSR: {fileID: 8787385009878230757}
-  wrapper: {fileID: 6001664429269202236}
 --- !u!210 &8386849277841333246
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -261,6 +244,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1066547027733929846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209221038175758211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bec79e2b5a2124b4586c50da9be1f615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 7411598279542472111}
+  description: {fileID: 4302300429253894024}
+  mana: {fileID: 7983093961350786859}
+  imageSR: {fileID: 8787385009878230757}
+  wrapper: {fileID: 6001664429269202236}
 --- !u!1 &2671724697284335044
 GameObject:
   m_ObjectHideFlags: 0
