@@ -1,3 +1,6 @@
+using System;
+using _Scripts.General.Util;
+using _Scripts.Systems;
 using TMPro;
 using UnityEngine;
 
@@ -8,8 +11,10 @@ public class CardView : MonoBehaviour
     [SerializeField] private TMP_Text mana;
     [SerializeField] private SpriteRenderer imageSR;
     [SerializeField] private GameObject wrapper;
-
+    
     public Card Card { get; private set; }
+    private Vector3 dragStartPosition;
+    private Quaternion dragStartRotation;
 
     public void Setup(Card card)
     {
@@ -19,15 +24,52 @@ public class CardView : MonoBehaviour
         mana.text = card.Mana.ToString();
         imageSR.sprite = card.Image;
     }
-    private void OnMouseEnter()
+
+    void OnMouseEnter()
     {
+        if (!Interactions.Instance.PlayerCanHover()) return;
         wrapper.SetActive(false);
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, 0);
+        Vector3 pos = new(transform.position.x, -2, 0);
         CardViewHoverSystem.Instance.Show(Card, pos);
     }
-    private void OnMouseExit()
+
+    void OnMouseExit()
     {
+        if (!Interactions.Instance.PlayerCanInteract()) return;
         CardViewHoverSystem.Instance.Hide();
         wrapper.SetActive(true);
+    }
+
+    void OnMouseDown()
+    {
+        if (!Interactions.Instance.PlayerCanInteract()) return;
+        Interactions.Instance.PlayerIsDragging = true;
+        wrapper.SetActive(true);
+        CardViewHoverSystem.Instance.Hide();
+        dragStartPosition = transform.position;
+        dragStartRotation = transform.rotation;
+        transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    private void OnMouseDrag()
+    {
+        if (!Interactions.Instance.PlayerCanInteract()) return;
+        transform.position = MouseUtil.GetMousePositionInWorldSpace(-1);
+    }
+
+    private void OnMouseUp()
+    {
+        if (!Interactions.Instance.PlayerCanInteract()) return;
+        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f))
+        {
+            // TODO Play card
+        }
+        else
+        {
+            transform.position = dragStartPosition;
+            transform.rotation = dragStartRotation;
+        }
+        Interactions.Instance.PlayerIsDragging = false;
     }
 }
