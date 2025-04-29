@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using _Scripts.GameActions;
+using _Scripts.Systems;
 using UnityEngine;
 
 /// <summary>
@@ -5,6 +8,14 @@ using UnityEngine;
 /// </summary>
 public class TestSystem : MonoBehaviour
 {
+    
+    [SerializeField] private List<CardData> deck;
+
+    private void Start()
+    {
+        CardSystem.Instance.Setup(deck);
+    }
+    
     [SerializeField] private HandView handView;
     [SerializeField] private CardData cardData;
 
@@ -13,9 +24,7 @@ public class TestSystem : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Space))
         {
-            Card card = new Card(cardData);
-            CardView cardView = CardViewCreator.Instance.CreateCardView(card, transform.position, Quaternion.identity);
-            StartCoroutine(handView.AddCard(cardView));
+            ActionSystem.Instance.Perform(new DrawCardsGA(1));
         }
     }
 }

@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -8,10 +9,11 @@ public class HandView : MonoBehaviour
 {
     [SerializeField] private SplineContainer splineContainer;
     [SerializeField] private List<CardView> cards = new();
+    private float animationDuration = 0.15f;
     public IEnumerator AddCard(CardView cardView)
     {
         cards.Add(cardView);
-        yield return UpdateCardPositions(0.15f) ;
+        yield return UpdateCardPositions(animationDuration) ;
     }
 
     private IEnumerator UpdateCardPositions(float duration)
@@ -32,5 +34,24 @@ public class HandView : MonoBehaviour
             cards[i].transform.DORotate(rotation.eulerAngles, duration);
         }
         yield return new WaitForSeconds(duration);
+    }
+
+    public CardView RemoveCard(Card card)
+    {
+        CardView cardView = GetCardView(card);
+        if (cardView == null)
+        {
+            Debug.LogWarning("CardView not found");
+            return null;
+        }
+        Debug.Log("CardView found");
+        cards.Remove(cardView);
+        StartCoroutine(UpdateCardPositions(animationDuration));
+        return cardView;
+    }
+
+    private CardView GetCardView(Card card)
+    {
+        return cards.Where(view => view.Card == card).FirstOrDefault(); 
     }
 }
