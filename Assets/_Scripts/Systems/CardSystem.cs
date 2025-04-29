@@ -24,6 +24,8 @@ namespace _Scripts.Systems
             ActionSystem.AttachPerformer<DrawCardsGA>(DrawCardsPerformer);
             ActionSystem.AttachPerformer<RefillGA>(RefillPerfomer);
             ActionSystem.AttachPerformer<DiscardAllCardsGA>(DiscardAllCardsPerformer);
+            ActionSystem.AttachPerformer<PlayCardGA>(PlayCardPerformer);
+            
             ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
         }
 
@@ -39,7 +41,10 @@ namespace _Scripts.Systems
         private void OnDisable()
         {
             ActionSystem.DetachPerformer<DrawCardsGA>();
+            ActionSystem.DetachPerformer<RefillGA>();
             ActionSystem.DetachPerformer<DiscardAllCardsGA>();
+            ActionSystem.DetachPerformer<PlayCardGA>();
+            
             ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
         }
 
@@ -67,6 +72,14 @@ namespace _Scripts.Systems
                 yield return DiscardCard(cardView);
             }
             hand.Clear();
+        }
+
+        private IEnumerator PlayCardPerformer(PlayCardGA action)
+        {
+            hand.Remove(action.card);
+            CardView cardView = handView.RemoveCard(action.card);
+            yield return DiscardCard(cardView);
+            // TODO Perform effect
         }
 
         // Reactions

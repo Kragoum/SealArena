@@ -261,6 +261,9 @@ MonoBehaviour:
   mana: {fileID: 7983093961350786859}
   imageSR: {fileID: 8787385009878230757}
   wrapper: {fileID: 6001664429269202236}
+  dropLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2671724697284335044
 GameObject:
   m_ObjectHideFlags: 0
