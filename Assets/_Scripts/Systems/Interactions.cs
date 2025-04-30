@@ -11,7 +11,8 @@
 
         public bool PlayerCanHover()
         {
-            return !PlayerIsDragging;
+            return PlayerCanInteract() 
+                   && !PlayerIsDragging;
         }
     }
 }
