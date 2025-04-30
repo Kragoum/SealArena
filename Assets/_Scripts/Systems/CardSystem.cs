@@ -45,7 +45,7 @@ namespace _Scripts.Systems
             ActionSystem.DetachPerformer<DiscardAllCardsGA>();
             ActionSystem.DetachPerformer<PlayCardGA>();
             
-            ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
+            ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
         }
 
         // Performers
@@ -105,6 +105,7 @@ namespace _Scripts.Systems
             cardView.transform.DOScale(Vector3.zero, 0.15f);
             Tween tween = cardView.transform.DOMove(discardPilePoint.position, 0.15f);
             yield return tween.WaitForCompletion();
+            discardPile.Add(cardView.Card);
             Destroy(cardView.gameObject);
         }
     }
