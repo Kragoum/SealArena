@@ -1,7 +1,10 @@
-﻿namespace _Scripts.Data
+﻿using System.Collections.Generic;
+
+namespace _Scripts.Data
 {
-    public class PlainEffect
+    [System.Serializable]
+    public abstract class PlainEffect
     {
-        
+        public abstract IEnumerable<GameAction> GameActionsEffect();
     }
 }

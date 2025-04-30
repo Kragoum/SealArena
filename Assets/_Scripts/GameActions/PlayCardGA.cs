@@ -7,6 +7,7 @@
         public PlayCardGA(Card card)
         {
             this.card = card;
+            PerformReactions.AddRange(card.GeneratedActions());
         }
     }
 }

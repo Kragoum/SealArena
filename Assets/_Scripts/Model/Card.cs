@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Card
@@ -11,5 +13,10 @@ public class Card
     {
         data = cardData;
         Mana = data.Mana;
+    }
+
+    public IEnumerable<GameAction> GeneratedActions()
+    {
+        return data.Effects.SelectMany(effect => effect.GameActionsEffect());
     }
 }
