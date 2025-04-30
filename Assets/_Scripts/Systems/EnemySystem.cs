@@ -16,5 +16,6 @@ public class EnemySystem : MonoBehaviour
     {
         Debug.Log("Enemy turn");
         yield return new WaitForSeconds(1f);
+        Debug.Log("Enemy end his turn");
     }
 }

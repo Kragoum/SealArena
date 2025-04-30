@@ -44,7 +44,6 @@ public class HandView : MonoBehaviour
             Debug.LogWarning("CardView not found");
             return null;
         }
-        Debug.Log("CardView found");
         cards.Remove(cardView);
         StartCoroutine(UpdateCardPositions(animationDuration));
         return cardView;
