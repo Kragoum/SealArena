@@ -79,7 +79,11 @@ namespace _Scripts.Systems
             hand.Remove(action.card);
             CardView cardView = handView.RemoveCard(action.card);
             yield return DiscardCard(cardView);
-            // TODO Perform effect
+            foreach (var effect in action.card.Effects())
+            {
+                var performEffectGA = new PerformEffectGA(effect);
+                ActionSystem.Instance.AddReaction(performEffectGA);
+            }
         }
 
         // Reactions

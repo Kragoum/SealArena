@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Data;
 using UnityEngine;
 
 public class Card
@@ -15,8 +16,8 @@ public class Card
         Mana = data.Mana;
     }
 
-    public IEnumerable<GameAction> GeneratedActions()
+    public IEnumerable<PlainEffect> Effects()
     {
-        return data.Effects.SelectMany(effect => effect.GameActionsEffect());
+        return data.Effects;
     }
 }
