@@ -1,10 +1,11 @@
+using _Scripts.Systems;
 using UnityEngine;
 
 public class EndTurnUIButton : MonoBehaviour
 {
     public void OnClick()
     {
-        EnemyTurnGA enemyTurnGA = new();
-        ActionSystem.Instance.Perform(enemyTurnGA);
+        var endPlayerPhase = new EndPhase();
+        ActionSystem.Instance.Perform(endPlayerPhase);
     }
 }

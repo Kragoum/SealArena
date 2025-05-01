@@ -25,8 +25,6 @@ namespace _Scripts.Systems
             ActionSystem.AttachPerformer<RefillGA>(RefillPerfomer);
             ActionSystem.AttachPerformer<DiscardAllCardsGA>(DiscardAllCardsPerformer);
             ActionSystem.AttachPerformer<PlayCardGA>(PlayCardPerformer);
-            
-            ActionSystem.SubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
         }
 
         public void Setup(List<CardData> deckData)
@@ -44,8 +42,6 @@ namespace _Scripts.Systems
             ActionSystem.DetachPerformer<RefillGA>();
             ActionSystem.DetachPerformer<DiscardAllCardsGA>();
             ActionSystem.DetachPerformer<PlayCardGA>();
-            
-            ActionSystem.UnsubscribeReaction<EnemyTurnGA>(EnemyTurnPostReaction, ReactionTiming.POST);
         }
 
         // Performers
@@ -84,14 +80,6 @@ namespace _Scripts.Systems
                 var performEffectGA = new PerformEffectGA(effect);
                 ActionSystem.Instance.AddReaction(performEffectGA);
             }
-        }
-
-        // Reactions
-        private void EnemyTurnPostReaction(EnemyTurnGA action)
-        {
-            ActionSystem.Instance.AddReaction(new DiscardAllCardsGA());
-            ActionSystem.Instance.AddReaction(new RefillGA());
-            ActionSystem.Instance.AddReaction(new DrawCardsGA(5));
         }
         
         // Helpers        
