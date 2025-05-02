@@ -2,6 +2,7 @@ using System;
 using _Scripts.GameActions;
 using _Scripts.General.Util;
 using _Scripts.Systems;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
@@ -61,8 +62,9 @@ public class CardView : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!Interactions.Instance.PlayerCanInteract()) return;
-        if (Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer))
+        var IsCardPlayed = Interactions.Instance.PlayerCanPlayCard(this.Card)
+                           && Physics.Raycast(transform.position, Vector3.forward, out RaycastHit hit, 10f, dropLayer); 
+        if (IsCardPlayed)
         {
             PlayCardGA playCardGa = new(Card);
             ActionSystem.Instance.Perform(playCardGa);

@@ -7,6 +7,7 @@ namespace _Scripts.Model.GamePhase
     {
         public IEnumerator StartingCurrentPhase()
         {
+            ActionSystem.Instance.AddReaction(new ResetManaGA());
             ActionSystem.Instance.AddReaction(new RefillGA());
             ActionSystem.Instance.AddReaction(new DrawCardsGA(5));
             yield return null;

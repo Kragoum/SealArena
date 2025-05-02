@@ -9,6 +9,11 @@
             return !ActionSystem.Instance.IsPerforming;
         }
 
+        public bool PlayerCanPlayCard(Card card)
+        {
+            return ManaSystem.Instance.IsPlayable(card);
+        }
+
         public bool PlayerCanHover()
         {
             return PlayerCanInteract() 

@@ -7,12 +7,14 @@ namespace _Scripts.Systems
     public class GameSetupSystem : MonoBehaviour
     {
         [SerializeField] private List<CardData> deck;
-
+        [SerializeField] private int initialMaximumMana;
+        
         private void Start()
         {
             CardSystem.Instance.Setup(deck);
             DrawCardsGA drawCardsGa = new(5);
             ActionSystem.Instance.Perform(drawCardsGa);
+            ManaSystem.Instance.Setup(initialMaximumMana);
         }
     }
 }
