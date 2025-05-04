@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace _Scripts.Model.GamePhase
 {
-    public class EnemyPhase :  IGameState
+    public class EnemyPhase :  GameState
     {
-        public IEnumerator StartingCurrentPhase()
+        public override void StartingCurrentPhase()
         {
             Debug.Log("Enemy turn...");
             yield return new WaitForSeconds(0.5f);
@@ -16,12 +16,7 @@ namespace _Scripts.Model.GamePhase
             ActionSystem.Instance.AddReaction(new EndPhase());
         }
 
-        public IEnumerator TerminateCurrentPhase()
-        {
-            yield return null;
-        }
-
-        public IGameState NextPhase()
+        public override IGameState NextPhase()
         {
             return new PlayerPhase();
         }

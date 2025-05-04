@@ -23,10 +23,11 @@ namespace _Scripts.Systems
         private IEnumerator EndPhasePerformer(EndPhaseGA action)
         {
             Debug.Log($"End current phase : {_gameState.GetType()}");
-            yield return _gameState.TerminateCurrentPhase();
+            _gameState.TerminateCurrentPhase();
             _gameState = _gameState.NextPhase();
-            yield return _gameState.StartingCurrentPhase();
+            _gameState.StartingCurrentPhase();
             Debug.Log($"New current phase : {_gameState.GetType()}");
+            yield return null;
         }
     }
 }

@@ -3,23 +3,21 @@ using _Scripts.GameActions;
 
 namespace _Scripts.Model.GamePhase
 {
-    public class PlayerPhase : IGameState
+    public class PlayerPhase : GameState
     {
-        public IEnumerator StartingCurrentPhase()
+        public override void StartingCurrentPhase()
         {
             ActionSystem.Instance.AddReaction(new ResetManaGA());
             ActionSystem.Instance.AddReaction(new RefillGA());
             ActionSystem.Instance.AddReaction(new DrawCardsGA(5));
-            yield return null;
         }
 
-        public IEnumerator TerminateCurrentPhase()
+        public override void TerminateCurrentPhase()
         {
             ActionSystem.Instance.AddReaction(new DiscardAllCardsGA());
-            yield return null;
         }
 
-        public IGameState NextPhase()
+        public override IGameState NextPhase()
         {
             return new EnemyPhase();
         }

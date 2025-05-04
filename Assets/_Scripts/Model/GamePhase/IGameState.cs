@@ -4,8 +4,8 @@ namespace _Scripts.Model.GamePhase
 {
     public interface IGameState
     {
-        public IEnumerator StartingCurrentPhase();
-        public IEnumerator TerminateCurrentPhase();
+        public void StartingCurrentPhase();
+        public void TerminateCurrentPhase();
         public IGameState NextPhase();
     }
 }
