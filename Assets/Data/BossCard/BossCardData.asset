@@ -9,20 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad9ba45883e4ad58618d2c94dfb9449, type: 3}
+  m_Script: {fileID: 11500000, guid: 6adb4ebd158d4c5458312faff37ac29e, type: 3}
   m_Name: BossCardData
   m_EditorClassIdentifier: 
-  illustration: {fileID: 21300000, guid: 67aed739df9cce4419fd241afc1aa87c, type: 3}
-  weakActions: 1
-  strongActions: 2
-  title: The Slime
+  illustration: {fileID: -3275906042666154760, guid: 9571124b6096f364b8a46ef053409218, type: 3}
+  weakActions: 2
+  strongActions: 1
+  title: Happy slime
   effects:
-  - rid: 149985539853123657
-  description: 
+  - rid: 149985588128514120
+  - rid: 149985588128514122
+  description: Not all slime are bad slime
   references:
     version: 2
     RefIds:
-    - rid: 149985539853123657
+    - rid: 149985588128514120
       type: {class: DrawEffect, ns: _Scripts.Data, asm: scriptsassembly}
       data:
-        Amount: 3
+        Amount: 1
+    - rid: 149985588128514122
+      type: {class: DrawEffect, ns: _Scripts.Data, asm: scriptsassembly}
+      data:
+        Amount: 2

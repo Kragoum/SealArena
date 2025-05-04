@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _Scripts.GameActions;
 using _Scripts.Systems;
 using UnityEngine;
 
@@ -8,12 +9,8 @@ namespace _Scripts.Model.GamePhase
     {
         public override void StartingCurrentPhase()
         {
-            Debug.Log("Enemy turn...");
-            yield return new WaitForSeconds(0.5f);
-            Debug.Log("Enemy is thinking hard...");
-            yield return new WaitForSeconds(2f);
-            Debug.Log("Enemy postpone it's terrible scheme!");
-            ActionSystem.Instance.AddReaction(new EndPhase());
+            ActionSystem.Instance.AddReaction(new EnemyTurnGA());
+            ActionSystem.Instance.AddReaction(new EndPhaseGA());
         }
 
         public override IGameState NextPhase()
