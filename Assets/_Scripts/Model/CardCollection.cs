@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace _Scripts.Views
 {
-    public class CardCollection
+    public class CardCollection<T>
     {
         public event Action<int> OnCollectionChanged;
         
-        private readonly List<Card> _cards = new();
+        private readonly List<T> _cards = new();
         public int Count => _cards.Count;
-        public void Add(Card card)
+        public void Add(T card)
         {
             _cards.Add(card);
             OnCollectionChanged?.Invoke(_cards.Count);
         }
-        public void AddPile(CardCollection card)
+        public void AddPile(CardCollection<T> card)
         {
             _cards.AddRange(card._cards);
             OnCollectionChanged?.Invoke(_cards.Count);
@@ -25,15 +25,15 @@ namespace _Scripts.Views
             _cards.Clear();
             OnCollectionChanged?.Invoke(_cards.Count);
         }
-        public IEnumerator<Card> GetEnumerator() => _cards.GetEnumerator(); 
-        public void Remove(Card card)
+        public IEnumerator<T> GetEnumerator() => _cards.GetEnumerator(); 
+        public void Remove(T card)
         {
             _cards.Remove(card);
             OnCollectionChanged?.Invoke(_cards.Count);
         }
-        public Card Draw()
+        public T Draw()
         {
-            if(_cards.Count == 0) return null;
+            if(_cards.Count == 0) return default;
             var randIdx = UnityEngine.Random.Range(0, _cards.Count);
             var selectedCard = _cards[randIdx];
             _cards.RemoveAt(randIdx);

@@ -13,9 +13,9 @@ namespace _Scripts.Systems
         [SerializeField] private CardPileView drawPile;
         [SerializeField] private CardPileView discardPile;
         
-        private readonly CardCollection _drawCollection = new();
-        private readonly CardCollection _discardCollection = new();
-        private readonly CardCollection _hand = new();
+        private readonly CardCollection<Card> _drawCollection = new();
+        private readonly CardCollection<Card> _discardCollection = new();
+        private readonly CardCollection<Card> _hand = new();
 
         private void OnEnable()
         {
