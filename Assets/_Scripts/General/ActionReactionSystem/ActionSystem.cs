@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 
 public class ActionSystem : Singleton<ActionSystem>
 {
@@ -13,6 +14,7 @@ public class ActionSystem : Singleton<ActionSystem>
     {
         if(IsPerforming)
         {
+            UnityEngine.Debug.LogError($"{GetType()} receive a request for a Perform() while performing a game action.");
             return;
         }
         IsPerforming = true;
