@@ -1,6 +1,6 @@
 ﻿namespace _Scripts.Model.GamePhase
 {
-    public abstract class GameState : IGameState
+    public abstract class GamePhase : IGamePhase
     {
         public virtual void StartingCurrentPhase()
         {
@@ -10,6 +10,6 @@
         {
         }
 
-        public abstract IGameState NextPhase();
+        public abstract IGamePhase NextPhase();
     }
 }

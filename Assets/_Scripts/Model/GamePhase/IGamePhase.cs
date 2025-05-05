@@ -2,10 +2,10 @@
 
 namespace _Scripts.Model.GamePhase
 {
-    public interface IGameState
+    public interface IGamePhase
     {
         public void StartingCurrentPhase();
         public void TerminateCurrentPhase();
-        public IGameState NextPhase();
+        public IGamePhase NextPhase();
     }
 }

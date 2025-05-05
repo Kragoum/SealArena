@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace _Scripts.Model.GamePhase
 {
-    public class EnemyPhase :  GameState
+    public class EnemyPhase :  GamePhase
     {
         public override void StartingCurrentPhase()
         {
@@ -13,7 +13,7 @@ namespace _Scripts.Model.GamePhase
             ActionSystem.Instance.AddReaction(new EndPhaseGA());
         }
 
-        public override IGameState NextPhase()
+        public override IGamePhase NextPhase()
         {
             return new PlayerPhase();
         }

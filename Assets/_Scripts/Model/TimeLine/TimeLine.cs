@@ -5,7 +5,6 @@ using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Splines;
-using Object = UnityEngine.Object;
 
 namespace _Scripts.Model.TimeLine
 {

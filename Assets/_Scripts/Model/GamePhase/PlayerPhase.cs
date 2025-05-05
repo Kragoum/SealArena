@@ -3,7 +3,7 @@ using _Scripts.GameActions;
 
 namespace _Scripts.Model.GamePhase
 {
-    public class PlayerPhase : GameState
+    public class PlayerPhase : GamePhase
     {
         public override void StartingCurrentPhase()
         {
@@ -17,7 +17,7 @@ namespace _Scripts.Model.GamePhase
             ActionSystem.Instance.AddReaction(new DiscardAllCardsGA());
         }
 
-        public override IGameState NextPhase()
+        public override IGamePhase NextPhase()
         {
             return new EnemyPhase();
         }

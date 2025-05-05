@@ -9,7 +9,7 @@ namespace _Scripts.Systems
     
     public class GameFlowSystem : Singleton<GameFlowSystem>
     {
-        private IGameState _gameState = new PlayerPhase();
+        private IGamePhase _gamePhase = new PlayerPhase();
         private void OnEnable()
         {
             ActionSystem.AttachPerformer<EndPhaseGA>(EndPhasePerformer);
@@ -22,11 +22,11 @@ namespace _Scripts.Systems
         
         private IEnumerator EndPhasePerformer(EndPhaseGA action)
         {
-            Debug.Log($"End current phase : {_gameState.GetType()}");
-            _gameState.TerminateCurrentPhase();
-            _gameState = _gameState.NextPhase();
-            _gameState.StartingCurrentPhase();
-            Debug.Log($"New current phase : {_gameState.GetType()}");
+            Debug.Log($"End current phase : {_gamePhase.GetType()}");
+            _gamePhase.TerminateCurrentPhase();
+            _gamePhase = _gamePhase.NextPhase();
+            _gamePhase.StartingCurrentPhase();
+            Debug.Log($"New current phase : {_gamePhase.GetType()}");
             yield return null;
         }
     }
